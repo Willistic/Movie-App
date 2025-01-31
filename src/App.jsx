@@ -1,4 +1,4 @@
-// 833a84b9
+import React from "react";
 import "./App.css";
 import SearchIcon from "./search.svg";
 import { useEffect, useState } from "react";
@@ -15,28 +15,27 @@ function App() {
     const data = await fetch(`${API_URL}&s=${title}`);
     const response = await data.json();
     setMovies(response.Search);
-    // console.log(response.Search)
   };
 
   useEffect(() => {
-    searchMovies("Spiderman");
+    searchMovies("batman");
   }, []);
 
   return (
     <div className="app">
       <h1>Movie App</h1>
       <div className="search">
-        <input 
-          type="text" 
-          placeholder="Search a movie" 
-          value={searchTerm} 
-          onChange={(event) => setSearchTerm(event.target.value)} 
-          />
-        <img 
-          src={SearchIcon} 
+        <input
+          type="text"
+          placeholder="Search a movie"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+        />
+        <img
+          src={SearchIcon}
           alt="search"
-          onClick={() => searchMovies(searchTerm)} 
-          />
+          onClick={() => searchMovies(searchTerm)}
+        />
       </div>
       {movies?.length > 0 ? (
         <div className="container">
